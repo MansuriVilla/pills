@@ -1,0 +1,267 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+button,
+input {
+  outline: 0;
+  border: 0;
+}
+button {
+  color: #000;
+}
+ul {
+  padding: 0 !important;
+  margin: 0;
+}
+li {
+  list-style: none;
+  margin: 0 10px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0 !important;
+  padding: 0;
+}
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  background-color: #000015;
+}
+.mdc-bg {
+  background-color: #d9d9d940;
+  border-radius: 10px;
+  width: 900px;
+  height: 600px;
+  position: relative;
+  /* overflow-y: scroll; */
+}
+.mdc-top {
+  display: flex;
+  gap: 20px;
+  border-radius: 10px 10px 0 0;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #ffffff40;
+}
+.mdc-inp {
+  height: 100%;
+  width: 75%;
+  display: flex;
+  align-items: self-start;
+  font-family: "Montserrat", sans-serif;
+}
+.inp {
+  width: 100%;
+  color: #fff;
+  height: 100%;
+  padding: 0 10px;
+  background-color: transparent;
+  border: 2px solid #ffffff40;
+  border-radius: 10px;
+}
+.mdc-btn-hld {
+  height: 100%;
+  display: flex;
+  width: 23%;
+}
+.mdc-btn {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+}
+.mdc-min {
+  min-height: 100%;
+}
+.mdc-min-inr {
+  padding: 10px;
+  height: 100%;
+}
+.mdc-inr {
+  width: 100%;
+  height: 100%;
+}
+.li-ctt {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  width: 100%;
+  color: #fff;
+  border: 2px solid #ffffff40;
+  border-radius: 15px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  font-family: "Montserrat", sans-serif;
+}
+.sr {
+  border-radius: 13px 0 0 13px;
+  border-right: 2px solid #ffffff40;
+  max-width: 15%;
+  min-width: 10%;
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+.txt-scc-hld {
+  display: flex;
+  align-items: self-start;
+  width: 70%;
+  margin: 0 10px;
+  min-width: 150px;
+  overflow: hidden;
+}
+.opt {
+  border-radius: 50px;
+  background-color: #ffffff40;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  color: #ffffff80;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.action-buttons {
+  display: flex;
+}
+.action-buttons button {
+  color: #fff;
+  border-radius: 8px !important;
+  margin: 0 7px 0 0;
+  height: 40px;
+  width: 60px;
+  border-radius: 10px;
+  background-color: #ffffff40;
+}
+.action-buttons button i {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.del {
+  color: rgba(255, 0, 0, 0.856);
+}
+.de {
+  border: 2px solid #ffffff40;
+  background-color: transparent !important;
+}
+.dnlo-scc {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  align-items: center;
+  justify-content: right;
+  padding: 10px;
+  background-color: #ffffff40;
+  border-radius: 0 0 10px 10px;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.dnlo-inr,
+.dnlo {
+  height: 100%;
+}
+.mdcc {
+  max-height: 450px;
+  overflow-y: scroll;
+}
+.dnlo-inr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+.dnlo {
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-family: "Montserrat", sans-serif;
+}
+.h {
+  background-color: transparent;
+  border: 2px solid #ffffff80;
+  color: #fff;
+}
+
+.selected {
+  background-color: #ffffff50;
+  border-radius: 15px;
+}
+
+/* Initially hide the scrollbar */
+.min-bg {
+  overflow: hidden;
+}
+
+/* Show the scrollbar when list items exceed the container's height */
+.min-bg.show-scroll {
+  overflow-y: auto;
+}
+::placeholder {
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+
+@media only screen and (max-width: 600px) and (min-width: 280px) {
+  .mdc-bg {
+    width: 100%;
+  }
+  #main {
+    padding: 15px;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
