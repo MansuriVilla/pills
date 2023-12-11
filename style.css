@@ -34,7 +34,6 @@ ul {
 }
 li {
   list-style: none;
-  margin: 0 10px;
 }
 h1,
 h2,
@@ -102,7 +101,7 @@ p {
   border-radius: 10px;
   background-color: #d9d9d940;
   height: 100%;
-  width: 60px;
+  /* width: 60px; */
   justify-content: center;
   align-items: center;
   display: flex;
@@ -143,6 +142,12 @@ p {
   background-color: transparent;
   border: 2px solid #ffffff40;
   border-radius: 10px !important;
+}
+.li-inr {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 .mdc-btn-hld {
   height: 100%;
@@ -230,7 +235,7 @@ label {
   border-radius: 8px !important;
   margin: 0 7px 0 0;
   height: 40px;
-  width: 60px;
+  /* width: 60px; */
   border-radius: 10px;
   border: 2px solid #ffffff40;
   background-color: transparent !important;
@@ -313,6 +318,12 @@ label {
     width: 100%;
     margin: 0px;
     height: 550px;
+  }
+  .txt-scc-hld {
+    min-width: 80px;
+  }
+  .mdp-values {
+    margin: 0 10px;
   }
   #main {
     padding: 15px;

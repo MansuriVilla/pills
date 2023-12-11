@@ -50,6 +50,7 @@ document
 
       li.innerHTML = `
         <div class="li-ctt">
+          <div class="li-inr">
             <div class="sr">
                 <p class="num">${ul.children.length + 1}.</p>
             </div>
@@ -69,6 +70,7 @@ document
                 <button class="deleteBtn de" ><i class="del fa-regular fa-trash-can"></i></button>
                 <button class="editBtn"><i class="fa-regular fa-pen-to-square"></i></button>
             </div>
+          </div>
         </div>
     `;
 
