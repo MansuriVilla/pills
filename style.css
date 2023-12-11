@@ -22,6 +22,7 @@ input {
   border-top: 2px solid #eeeeee30;
   padding: 3px 0 0 3px;
   font-size: 16px;
+  border-radius: 0px !important;
   background-color: transparent;
 }
 * button {
@@ -311,6 +312,7 @@ label {
   .mdc-bg {
     width: 100%;
     margin: 0px;
+    height: 550px;
   }
   #main {
     padding: 15px;
@@ -323,6 +325,9 @@ label {
   }
   .mpd {
     flex-wrap: wrap;
+  }
+  .mdc-btn-hld {
+    width: 100%;
   }
 }
 
