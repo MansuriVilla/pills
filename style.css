@@ -62,9 +62,7 @@ p {
   height: 600px;
   position: relative;
 }
-.min-inrr {
-  width: -webkit-fill-available;
-}
+
 .mpd {
   display: flex;
   gap: 10px;
@@ -325,12 +323,12 @@ label {
   .action-buttons {
     padding: 0px 0px 0px 8px;
   }
-  .mdc-min-inr{
+  .mdc-min-inr {
     padding: 0 8px;
-    
   }
   .min-inrr {
     margin-bottom: 50px;
+    width: -webkit-fill-available;
   }
   .mdp-values p {
     padding: 5px;
