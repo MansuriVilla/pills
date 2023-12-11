@@ -1,32 +1,80 @@
 document
+  .getElementById("medicineName")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      document.getElementById("mpdInput1").focus();
+    }
+  });
+
+document
+  .getElementById("mpdInput1")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      document.getElementById("mpdInput2").focus();
+    }
+  });
+
+document
+  .getElementById("mpdInput2")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      document.getElementById("mpdInput3").focus();
+    }
+  });
+
+document
+  .getElementById("mpdInput3")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      document.getElementById("addMedicineBtn").click();
+    }
+  });
+
+document
   .getElementById("addMedicineBtn")
   .addEventListener("click", function () {
     const medicineName = document.getElementById("medicineName").value;
-    if (medicineName.trim() !== "") {
+    const mpdInput1 = document.getElementById("mpdInput1").value;
+    const mpdInput2 = document.getElementById("mpdInput2").value;
+    const mpdInput3 = document.getElementById("mpdInput3").value;
+
+    if (
+      medicineName.trim() !== "" &&
+      mpdInput1.trim() !== "" &&
+      mpdInput2.trim() !== "" &&
+      mpdInput3.trim() !== ""
+    ) {
       const ul = document.getElementById("medicineList");
       const li = document.createElement("li");
       li.className = "mdc-li";
+
       li.innerHTML = `
         <div class="li-ctt">
-          <div class="sr">
-            <p class="num">${ul.children.length + 1}.</p>
-          </div>
-          <div class="txt-scc-hld">
-            <div class="txt">
-              <h6 class="mdc-nm">${medicineName}</h6>
+            <div class="sr">
+                <p class="num">${ul.children.length + 1}.</p>
             </div>
-          </div>
-          <div class="action-buttons">
-            <button class="deleteBtn de"><i class="del fa-regular fa-trash-can"></i></button>
-            <button class="editBtn"><i class="fa-regular fa-pen-to-square"></i></button>
-          </div>
+            <div class="txt-scc-hld">
+                <div class="txt">
+                    <h6 class="mdc-nm">${medicineName}</h6>
+                </div>
+            </div>
+            <div class="mdp-values">
+                <p>${mpdInput1}</p>
+                <span>-</span>
+                <p>${mpdInput2}</p>
+                <span>-</span>
+                <p>${mpdInput3}</p>
+            </div>
+            <div class="action-buttons">
+                <button class="deleteBtn de" ><i class="del fa-regular fa-trash-can"></i></button>
+                <button class="editBtn"><i class="fa-regular fa-pen-to-square"></i></button>
+            </div>
         </div>
-      `;
+    `;
 
       li.addEventListener("click", function (event) {
         const actionButtons = li.querySelector(".action-buttons");
-        actionButtons.style.display = "flex"; // Always set display to 'block' when clicking
-
+        actionButtons.style.display = "flex";
         event.stopPropagation();
       });
 
@@ -42,57 +90,24 @@ document
       });
 
       ul.appendChild(li);
-      document.getElementById("medicineName").value = ""; // Clear the input field
+
+      document.getElementById("medicineName").value = "";
+      document.getElementById("mpdInput1").value = "";
+      document.getElementById("mpdInput2").value = "";
+      document.getElementById("mpdInput3").value = "";
     }
   });
 
-// document
-//   .getElementById("downloadPDFBtn")
-//   .addEventListener("click", function () {
-//     const selectedMedicines = document.querySelectorAll(
-//       ".mdc-li.selected .mdc-nm"
-//     );
-//     const selectedMedicineNames = Array.from(selectedMedicines).map(
-//       (item) => item.textContent
-//     );
-
-//     if (selectedMedicineNames.length === 0) {
-//       alert("No selected medicines to download.");
-//       return;
-//     }
-
-//     // Create a new PDF document
-//     const doc = new jsPDF();
-
-//     // Set font size and style
-//     doc.setFontSize(12);
-//     doc.setFont("helvetica");
-//     doc.setFontType("normal");
-
-//     // Set text color
-//     doc.setTextColor(0, 0, 0); // Black color
-
-//     // Add selected medicines to the PDF with styling
-//     doc.text("Selected Medicines", 10, 10);
-//     selectedMedicineNames.forEach((medicine, index) => {
-//       const yPosition = 20 + index * 10;
-//       doc.text(index + 1 + ". " + medicine, 10, yPosition);
-//     });
-
-//     // Save the PDF and allow the user to download it
-//     doc.save("selected_medicines.pdf");
-//   });
-
 // Import the PDFDocument class from pdf-lib
 const { PDFDocument, rgb } = PDFLib;
+
 document
   .getElementById("downloadPDFBtn")
   .addEventListener("click", async function () {
-    const selectedMedicines = document.querySelectorAll(
-      ".mdc-li.selected .mdc-nm"
-    );
+    const selectedMedicines = document.querySelectorAll(".mdc-li.selected");
     const selectedMedicineNames = Array.from(selectedMedicines).map(
-      (item, index) => `${index + 1}. ${item.textContent}`
+      (item, index) =>
+        `${index + 1}. ${item.querySelector(".mdc-nm").textContent}`
     );
 
     if (selectedMedicineNames.length === 0) {
@@ -100,26 +115,49 @@ document
       return;
     }
 
+    // Create a new PDF document
     const pdfDoc = await PDFDocument.create();
     const page = pdfDoc.addPage();
 
+    // Set font size and add text to the page
     const helveticaFont = await pdfDoc.embedFont(
       PDFLib.StandardFonts.Helvetica
     );
     const textSize = 12;
 
-    const text = selectedMedicineNames.join("\n");
+    // Include the new input values in the PDF content
+    const combinedMedicineValues = [];
+    selectedMedicineNames.forEach((name, index) => {
+      const li = selectedMedicines[index];
+      const mpdInput1 = li.querySelector(
+        ".mdp-values p:nth-child(1)"
+      ).textContent;
+      const mpdInput2 = li.querySelector(
+        ".mdp-values p:nth-child(3)"
+      ).textContent;
+      const mpdInput3 = li.querySelector(
+        ".mdp-values p:nth-child(5)"
+      ).textContent;
+
+      combinedMedicineValues.push(
+        `${name} | ${mpdInput1} - ${mpdInput2} - ${mpdInput3}`
+      );
+    });
+
+    const text = combinedMedicineValues.join("\n");
 
     page.drawText(text, {
       x: 50,
-      y: page.getHeight() - 50,
+      y: page.getHeight() - 50, // Adjust the starting y-coordinate based on the page height
       size: textSize,
       font: helveticaFont,
-      color: rgb(0, 0, 0),
+      color: rgb(0, 0, 0), // Black color
     });
 
+    // Serialize the PDF to bytes
     const pdfBytes = await pdfDoc.save();
 
+    // Create a Blob and download the PDF
     const blob = new Blob([pdfBytes], { type: "application/pdf" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -134,93 +172,16 @@ document.getElementById("selectAllBtn").addEventListener("click", function () {
   });
 });
 
-document
-  .getElementById("addMedicineBtn")
-  .addEventListener("click", function () {});
-
+// Event listener for the Enter key (key code 13) as a shortcut for adding a medicine
 document.addEventListener("keydown", function (event) {
   if (event.keyCode === 13) {
     document.getElementById("addMedicineBtn").click();
   }
 });
 
+// Event listener for the forward slash key ("/") as a shortcut for focusing on the input field
 document.addEventListener("keydown", function (event) {
   if (event.key === "/") {
     document.getElementById("medicineName").focus();
   }
 });
-
-let pdfBytes;
-
-document
-  .getElementById("downloadPDFBtn")
-  .addEventListener("click", async function () {
-    pdfBytes = await pdfDoc.save();
-
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.toLocaleDateString()} ${currentDate.toLocaleTimeString()}`;
-
-    const lines = selectedMedicineNames.length + 1; // Add 1 for the "Selected Medicines" title
-    const yPositionDate = 20 + lines * 10;
-
-    doc.text(`Generated on: ${formattedDate}`, 10, yPositionDate);
-
-    const blob = new Blob([pdfBytes], { type: "application/pdf" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "selected_medicines.pdf";
-    link.click();
-  });
-
-function sharePDFOnWhatsApp() {
-  if (pdfBytes) {
-    const pdfBlob = new Blob([pdfBytes], { type: "application/pdf" });
-    const pdfURL = URL.createObjectURL(pdfBlob);
-    const shareMessage = "Check out this PDF: " + pdfURL;
-    const whatsappURL =
-      "whatsapp://send?text=" + encodeURIComponent(shareMessage);
-
-    window.location.href = whatsappURL;
-  } else {
-    alert("No PDF to share. Please generate the PDF first.");
-  }
-}
-
-// Event listener for the "Share on WhatsApp" button
-// document.getElementById("sharePDFBtn").addEventListener("click", function () {
-//   sharePDFOnWhatsApp();
-// });
-// const whatsappShareBtn = document.createElement("button");
-// whatsappShareBtn.className = "dnlo";
-// whatsappShareBtn.innerText = "Share on WhatsApp";
-// whatsappShareBtn.addEventListener("click", function () {
-//   shareMedicineOnWhatsApp(medicineName);
-// });
-
-// li.appendChild(whatsappShareBtn);
-
-function shareSelectedMedicinesOnWhatsApp() {
-  const selectedMedicineItems = document.querySelectorAll(
-    ".mdc-li.selected .mdc-nm"
-  );
-  const selectedMedicineNames = Array.from(selectedMedicineItems).map(
-    (item, index) => `${index + 1}. ${item.textContent}`
-  );
-
-  if (selectedMedicineNames.length === 0) {
-    alert("No selected medicines to share.");
-    return;
-  }
-
-  const shareMessage =
-    "Selected Medicines:\n" + selectedMedicineNames.join("\n");
-  const whatsappURL =
-    "whatsapp://send?text=" + encodeURIComponent(shareMessage);
-
-  window.location.href = whatsappURL;
-}
-document
-  .getElementById("shareSelectedMedicinesBtn")
-  .addEventListener("click", function () {
-    shareSelectedMedicinesOnWhatsApp();
-  });

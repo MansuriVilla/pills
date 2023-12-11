@@ -16,7 +16,15 @@ input {
   outline: 0;
   border: 0;
 }
-button {
+input {
+  width: -webkit-fill-available;
+  color: #fff;
+  border-top: 2px solid #eeeeee30;
+  padding: 3px 0 0 3px;
+  font-size: 16px;
+  background-color: transparent;
+}
+* button {
   color: #000;
 }
 ul {
@@ -49,11 +57,55 @@ p {
 .mdc-bg {
   background-color: #d9d9d940;
   border-radius: 10px;
-  width: 900px;
+  margin: 10px;
+  max-width: 900px;
   height: 600px;
   position: relative;
-  /* overflow-y: scroll; */
 }
+.mpd {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+}
+.mpd-min {
+  display: flex;
+  gap: 10px;
+}
+.mpd-inp {
+  max-width: 100px;
+  width: 30%;
+  height: 100%;
+}
+.mpd-num {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: transparent;
+  outline: 0;
+  border: 2px solid #d9d9d940;
+  color: #fff;
+}
+.mdp-values {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0 30px;
+}
+.mdp-values p {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #d9d9d940;
+  height: 100%;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  display: none;
+}
+
 .mdc-top {
   display: flex;
   gap: 20px;
@@ -61,7 +113,7 @@ p {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 80px;
+  min-height: 80px;
   padding: 10px;
   position: sticky;
   top: 0;
@@ -71,16 +123,17 @@ p {
 }
 .mdc-inp {
   height: 100%;
-  width: 75%;
   display: flex;
+  color: #fff;
   align-items: self-start;
   font-family: "Montserrat", sans-serif;
 }
 .inp {
   width: 100%;
   color: #fff;
-  height: 100%;
+  min-height: 60px;
   padding: 0 10px;
+  position: relative;
   background-color: transparent;
   border: 2px solid #ffffff40;
   border-radius: 10px;
@@ -97,6 +150,12 @@ p {
   border-radius: 8px;
   padding: 5px 10px;
   font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+}
+
+label {
+  font-size: 14px;
+  padding: 3px;
   font-family: "Montserrat", sans-serif;
 }
 .mdc-min {
@@ -154,6 +213,11 @@ p {
 }
 .action-buttons {
   display: flex;
+  border-left: 2px solid #ffffff40;
+  padding: 0 0 0 10px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 .action-buttons button {
   color: #fff;
@@ -162,7 +226,8 @@ p {
   height: 40px;
   width: 60px;
   border-radius: 10px;
-  background-color: #ffffff40;
+  border: 2px solid #ffffff40;
+  background-color: transparent !important;
 }
 .action-buttons button i {
   width: 100%;
@@ -243,6 +308,15 @@ p {
   }
   #main {
     padding: 15px;
+  }
+  .mdc-inp {
+    width: 96%;
+  }
+  .mdc-top {
+    flex-wrap: wrap;
+  }
+  .mpd {
+    flex-wrap: wrap;
   }
 }
 

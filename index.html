@@ -28,14 +28,37 @@
           <div class="mdc-bg">
             <div class="mdc-inr">
               <div class="mdc-top">
-                <div class="mdc-inp">
-                  <input
-                    type="text"
-                    name="medicineName"
-                    id="medicineName"
-                    class="inp"
-                    placeholder="Medicine Name"
-                  />
+                <div class="mpd">
+                  <div class="mdc-inp">
+                    <input
+                      type="text"
+                      name="medicineName"
+                      id="medicineName"
+                      class="inp"
+                      placeholder="Medicine Name"
+                    />
+                  </div>
+                  <div class="mpd-min">
+                    <div class="mpd-inp">
+                      <label for="h" class="mpd-num"
+                        >Day<input type="number" accept="number" id="mpdInput1"
+                      /></label>
+                    </div>
+                    <div class="mpd-inp">
+                      <label for="h" class="mpd-num"
+                        >Mid-Day<input
+                          type="number"
+                          id="mpdInput2"
+                          accept="number"
+                      /></label>
+                    </div>
+                    <div class="mpd-inp">
+                      <label for="h" class="mpd-num"
+                        >Night
+                        <input type="number" id="mpdInput3" accept="number" />
+                      </label>
+                    </div>
+                  </div>
                 </div>
                 <div class="mdc-btn-hld">
                   <button class="mdc-btn" id="addMedicineBtn">
