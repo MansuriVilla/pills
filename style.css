@@ -142,7 +142,7 @@ p {
   position: relative;
   background-color: transparent;
   border: 2px solid #ffffff40;
-  border-radius: 10px;
+  border-radius: 10px !important;
 }
 .mdc-btn-hld {
   height: 100%;
