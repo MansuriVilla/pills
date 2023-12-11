@@ -62,14 +62,19 @@ p {
   height: 600px;
   position: relative;
 }
+.min-inrr {
+  width: -webkit-fill-available;
+}
 .mpd {
   display: flex;
   gap: 10px;
   height: 100%;
 }
 .mpd-min {
-  display: flex;
+  justify-content: space-between;
+  width: -webkit-fill-available;
   gap: 10px;
+  display: flex;
 }
 .mpd-inp {
   max-width: 100px;
@@ -305,12 +310,13 @@ label {
 @media only screen and (max-width: 600px) and (min-width: 280px) {
   .mdc-bg {
     width: 100%;
+    margin: 0px;
   }
   #main {
     padding: 15px;
   }
   .mdc-inp {
-    width: 96%;
+    width: -webkit-fill-available;
   }
   .mdc-top {
     flex-wrap: wrap;
