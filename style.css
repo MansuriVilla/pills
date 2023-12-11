@@ -69,8 +69,6 @@ p {
   height: 100%;
 }
 .mpd-min {
-  justify-content: space-between;
-  width: -webkit-fill-available;
   gap: 10px;
   display: flex;
 }
@@ -316,6 +314,10 @@ label {
     width: 100%;
     margin: 0px;
     height: 550px;
+  }
+  .mpd-min {
+    justify-content: space-between;
+    width: -webkit-fill-available;
   }
   .action-buttons button {
     width: 32px;
