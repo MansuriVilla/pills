@@ -235,7 +235,7 @@ label {
   border-radius: 8px !important;
   margin: 0 7px 0 0;
   height: 40px;
-  /* width: 60px; */
+  width: 60px;
   border-radius: 10px;
   border: 2px solid #ffffff40;
   background-color: transparent !important;
@@ -319,6 +319,19 @@ label {
     margin: 0px;
     height: 550px;
   }
+  .action-buttons button {
+    width: 32px;
+  }
+  .action-buttons {
+    padding: 0px 0px 0px 8px;
+  }
+  .mdc-min-inr{
+    padding: 0 8px;
+    
+  }
+  .min-inrr {
+    margin-bottom: 50px;
+  }
   .mdp-values p {
     padding: 5px;
     width: 25px;
@@ -327,7 +340,7 @@ label {
     max-height: 275px;
   }
   .txt-scc-hld {
-    min-width: 80px;
+    min-width: 60px;
   }
   .mdp-values {
     margin: 0 10px;
